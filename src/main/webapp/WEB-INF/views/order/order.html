@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+</head>
+<body>
+
+<h1 th:text="'Order number: '${order.getId()}">Id</h1>
+<p th:text="'Date created: ' + ${order.getDateCreated()}">Release date</p>
+<p th:text="'Status: ' + ${order.getStatus().getDisplayValue()}">Status</p>
+<p th:text="'Delivery address: ' + ${order.getDeliveryAddress()}">Delivery address</p>
+<p th:text="'Count: ' + ${order.getCount()}">Count</p>
+<p th:text="'Price: ' + ${order.getPrice()}">Price</p>
+<p th:text="'Client: ' + ${order.getClient().getId()}">Price</p>
+<br/>
+
+<form th:action="@{/orders/edit/{id}(id=${order.getId()})}" method="get">
+    <button type="submit">Update order</button>
+</form>
+<br/>
+
+<form th:action="@{/orders/{id}(id=${order.getId()})}" method="post">
+    <button type="submit">Delete order</button>
+</form>
+<br/>
+
+<form th:action="@{/orders}" method="get">
+    <button type="submit">List orders</button>
+</form>
+
+</body>
+</html>

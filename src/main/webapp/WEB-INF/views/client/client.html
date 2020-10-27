@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Client</title>
+</head>
+<body>
+
+<h1 th:text="${client.getName()}">Name</h1>
+<p th:text="'Age: ' + ${client.getAge()}">Release date</p>
+<p th:text="'Phone number: ' + ${client.getPhoneNumber()}">Description</p>
+<p th:text="'Email: ' + ${client.getEmail()}">Genre</p>
+<p th:text="'Orders: ' + ${client.getOrders().getId()}">Bestseller</p>
+<br/>
+
+<form th:action="@{/clients/edit/{id}(id=${client.getId()})}" method="get">
+    <button type="submit">Update client</button>
+</form>
+<br/>
+
+<form th:action="@{/clients/{id}(id=${client.getId()})}" method="post">
+    <button type="submit">Delete client</button>
+</form>
+<br/>
+
+<form th:action="@{/clients}" method="get">
+    <button type="submit">List clients</button>
+</form>
+</body>
+</html>

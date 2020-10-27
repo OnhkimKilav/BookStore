@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+</head>
+<body>
+
+<h1 th:text="${book.getTitle()}">Title</h1>
+<p th:text="'Release date: ' + ${book.getReleaseDate()}">Release date</p>
+<p th:text="'Description: ' + ${book.getDescription()}">Description</p>
+<p th:text="'Genre: ' + ${book.getGenre().getDisplayValue()}">Genre</p>
+<p th:text="'Bestseller: ' + ${book.isBestseller()}">Bestseller</p>
+<p th:text="'Price: ' + ${book.getPrice()}">Price</p>
+<p th:text="'Availability: ' + ${book.isAvailability()}">Availability</p>
+<p th:text="'Discount: ' + ${book.isDiscount()}">Discount</p>
+<br/>
+<form th:action="@{/books/edit/{id}(id=${book.getId()})}" method="get">
+    <button type="submit">Update book</button>
+</form>
+<br/>
+<form th:action="@{/books/{id}(id=${book.getId()})}" method="post">
+    <button type="submit">Delete book</button>
+</form>
+<br/>
+<form th:action="@{/books}" method="get">
+    <button type="submit">List books</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create book</title>
+</head>
+<body>
+<h1>Create book</h1>
+
+<form th:action="@{/books}" th:object="${book}" th:method="POST">
+    <div>
+        <label for="title">Title: </label>
+        <input id="title" type="text" th:field="*{title}" required placeholder="Enter title">
+    </div>
+
+    <div>
+        <label for="description">Description: </label>
+        <input id="description" type="text" th:field="*{description}" required placeholder="Enter description">
+    </div>
+
+    <div>
+        <label for="genre">Genre: </label>
+        <select name="genre" id="genre">
+            <option th:each="genre : ${T(ua.mikhno.bookStore.models.Genre).values()}"
+                    th:value="${genre}" th:text="${genre.displayValue}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label for="bestseller">Bestseller: </label>
+        <input id="bestseller" type="checkbox" th:field="*{bestseller}">
+    </div>
+
+    <div>
+        <label for="price">Price: </label>
+        <input id="price" type="number" th:field="*{price}" required placeholder="Enter price">
+    </div>
+
+    <div>
+        <label for="availability">Availability: </label>
+        <input id="availability" type="checkbox" th:field="*{availability}">
+    </div>
+
+    <div>
+        <label for="discount">Discount: </label>
+        <input id="discount" type="checkbox" th:field="*{discount}">
+    </div>
+
+
+    <input type="submit" value="Create"> <input type="reset" value="Reset">
+
+</form>
+</body>
+</html>

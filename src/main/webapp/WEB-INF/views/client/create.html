@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create client</title>
+</head>
+<body>
+
+<form th:action="@{/clients}" th:object="${client}" th:method="POST">
+    <div>
+        <label for="name">Name: </label>
+        <input id="name" type="text" th:field="*{name}" required placeholder="Enter name">
+    </div>
+
+    <div>
+        <label for="age">Age: </label>
+        <input id="age" type="number" th:field="*{age}" required placeholder="Enter age">
+    </div>
+
+    <div>
+        <label for="phone">Phone number: </label>
+        <input id="phone" type="tel" th:field="*{phoneNumber}"
+               pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" required placeholder="Enter phone number">
+    </div>
+
+    <div>
+        <label for="email">Email: </label>
+        <input id="email" type="email" th:field="*{email}"
+               required placeholder="Enter email">
+    </div>
+
+    <input type="submit" value="Create"> <input type="reset" value="Reset">
+</form>
+
+</body>
+</html>
